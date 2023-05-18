@@ -1,0 +1,14 @@
+---
+
+- hosts: ansiblehost
+  
+  tasks:
+    - name: Create Docker image
+      command: docker build . -t todo_ans
+      args: 
+       chdir: /home/ansadmin/django_todo_DEV  
+    - name: Docker adding tag to image
+      command: docker tag todo_ans1 rv_2811/todo_ans
+
+    - name: Push Docker image to dockerhub
+      command: docker push rv2811/todo_ans
