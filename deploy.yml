@@ -1,0 +1,17 @@
+---
+- hosts : ansiblehost
+
+  tasks : 
+  - name : stop docker container
+    command : docker stop todo_con
+    
+  - name : remove docker container
+    command : docker rm todo_con
+
+  - name : Remove docker image
+    command : docker rmi rv2811/todo_ans
+
+  - name : Create Fresh container with latest image
+    command : docker run --name todo_con -d -p 8002:8001 rv2811/todo_ans 
+
+    
